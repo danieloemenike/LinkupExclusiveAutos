@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Linkup Exclusive Autos — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ─── CSS Variables ─── */
+  :root {
+    --brand-red:      #D0021B;
+    --brand-red-deep: #A50115;
+    --brand-red-light:#FF2D42;
+    --brand-chrome:   #B8BEC8;
+    --brand-black:    #0D0D0D;
+    --radius: 8px;
+  }
+
+  [data-theme="dark"] {
+    --bg:           #0D0D0D;
+    --bg-subtle:    #141414;
+    --surface:      #1C1C1E;
+    --surface-raised:#252528;
+    --border:       #2C2C2E;
+    --fg:           #F5F5F5;
+    --fg-muted:     #8A8A8E;
+    --fg-subtle:    #48484A;
+    --accent:       #D0021B;
+    --accent-hover: #FF2D42;
+    --chrome:       #B8BEC8;
+    --shadow:       0 4px 24px rgba(0,0,0,0.5);
+    --shadow-red:   0 4px 20px rgba(208,2,27,0.35);
+  }
+
+  [data-theme="light"] {
+    --bg:           #FAFAFA;
+    --bg-subtle:    #F4F4F5;
+    --surface:      #FFFFFF;
+    --surface-raised:#F9F9F9;
+    --border:       #E4E4E7;
+    --fg:           #09090B;
+    --fg-muted:     #71717A;
+    --fg-subtle:    #A1A1AA;
+    --accent:       #D0021B;
+    --accent-hover: #A50115;
+    --chrome:       #6B7280;
+    --shadow:       0 2px 12px rgba(0,0,0,0.08);
+    --shadow-red:   0 4px 20px rgba(208,2,27,0.2);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ─── Layout ─── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+
+  /* ─── Header ─── */
+  .site-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 16px;
+  }
+  .logo-area { display: flex; align-items: center; gap: 12px; }
+  .logo-box {
+    width: 48px; height: 48px;
+    background: var(--brand-red);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo-box svg { width: 28px; height: 28px; fill: white; }
+  .logo-text { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; }
+  .logo-text span { color: var(--brand-red); }
+  .header-subtitle { font-size: 11px; color: var(--fg-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .theme-toggle {
+    display: flex; gap: 8px; align-items: center;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 4px 6px;
+  }
+  .theme-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    color: var(--fg-muted);
+    transition: all 0.2s;
+  }
+  .theme-btn.active {
+    background: var(--accent);
+    color: white;
+  }
+  .theme-btn:hover:not(.active) { color: var(--fg); }
+
+  /* ─── Section title ─── */
+  .section-label {
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--fg);
+    margin-bottom: 32px;
+    line-height: 1.2;
+  }
+
+  /* ─── Color Swatches ─── */
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; }
+  .swatch {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .swatch-color { height: 72px; width: 100%; }
+  .swatch-info { padding: 10px 12px; background: var(--surface); }
+  .swatch-name { font-size: 12px; font-weight: 500; color: var(--fg); }
+  .swatch-hex { font-size: 11px; color: var(--fg-muted); font-family: monospace; margin-top: 2px; }
+  .swatch-role { font-size: 10px; color: var(--fg-subtle); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ─── Typography ─── */
+  .type-sample { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border); }
+  .type-sample:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .type-meta { font-size: 12px; color: var(--fg-muted); margin-top: 8px; font-family: monospace; }
+  .font-display { font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 1; color: var(--fg); }
+  .font-h1 { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 48px; line-height: 1.1; }
+  .font-h2 { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 36px; line-height: 1.2; }
+  .font-h3 { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.3; }
+  .font-body-lg { font-family: 'DM Sans', sans-serif; font-size: 18px; line-height: 1.7; }
+  .font-body { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; }
+  .font-label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted); }
+
+  /* ─── Buttons ─── */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: 0.03em; text-transform: uppercase;
+    padding: 11px 24px; border-radius: var(--radius);
+    cursor: pointer; border: none; text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: var(--shadow-red);
+  }
+  .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(208,2,27,0.4); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+  .btn-secondary:hover { background: var(--accent); color: white; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--fg);
+    border: 1.5px solid var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-chrome {
+    background: var(--chrome);
+    color: #0D0D0D;
+  }
+  .btn-chrome:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-sm { padding: 7px 16px; font-size: 13px; }
+  .btn-lg { padding: 15px 32px; font-size: 17px; }
+
+  /* ─── Cards ─── */
+  .card-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-red); border-color: var(--accent); }
+  .card-icon {
+    width: 44px; height: 44px;
+    background: rgba(208,2,27,0.12);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+  .card-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+  .card-body { font-size: 14px; color: var(--fg-muted); line-height: 1.6; }
+
+  /* ─── Badges ─── */
+  .badge-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 99px;
+  }
+  .badge-red { background: rgba(208,2,27,0.15); color: var(--brand-red-light); border: 1px solid rgba(208,2,27,0.3); }
+  .badge-chrome { background: rgba(184,190,200,0.15); color: var(--chrome); border: 1px solid rgba(184,190,200,0.25); }
+  .badge-surface { background: var(--surface-raised); color: var(--fg-muted); border: 1px solid var(--border); }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .badge-dot-red { background: var(--brand-red); }
+  .badge-dot-green { background: #22C55E; }
+
+  /* ─── Form Inputs ─── */
+  .form-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: 13px; font-weight: 500; color: var(--fg-muted); }
+  .form-input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--fg);
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(208,2,27,0.15); }
+  .form-input::placeholder { color: var(--fg-subtle); }
+  .form-select {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--fg);
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    padding: 11px 14px;
+    outline: none; width: 100%;
+    transition: border-color 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A8E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+  .form-select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(208,2,27,0.15); }
+
+  /* ─── Hero Preview ─── */
+  .hero-preview {
+    position: relative;
+    background: #0D0D0D;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 320px;
+    display: flex; align-items: center;
+    padding: 48px 48px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(208,2,27,0.12) 0%, transparent 60%),
+                linear-gradient(135deg, #0D0D0D 0%, #1C1C1E 100%);
+  }
+  .hero-noise {
+    position: absolute; inset: 0; opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 520px; }
+  .hero-label { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-family: 'DM Sans'; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 7vw, 80px); line-height: 0.95; color: #F5F5F5; margin-bottom: 16px; }
+  .hero-title span { color: var(--brand-red); }
+  .hero-sub { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #8A8A8E; line-height: 1.6; margin-bottom: 28px; max-width: 400px; }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .hero-tag { font-size: 12px; font-weight: 500; color: var(--brand-chrome); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 99px; font-family: 'DM Sans'; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* ─── Divider ─── */
+  .divider { width: 100%; height: 1px; background: var(--border); margin: 0; }
+  .divider-red { background: linear-gradient(90deg, var(--accent) 0%, transparent 100%); height: 2px; width: 60px; border-radius: 2px; margin: 16px 0 32px; }
+
+  /* ─── WhatsApp FAB preview ─── */
+  .fab-preview {
+    position: relative; height: 80px;
+    background: var(--bg-subtle, var(--surface));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: flex-end;
+    padding: 0 24px;
+    font-size: 13px; color: var(--fg-muted);
+  }
+  .fab {
+    width: 52px; height: 52px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .fab:hover { transform: scale(1.08); }
+  .fab svg { width: 28px; height: 28px; fill: white; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 600px) {
+    .hero-preview { padding: 32px 24px; }
+    .font-display { font-size: 52px; }
+    .section { padding: 40px 0; }
+    .hero-title { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Header ─── -->
+<header class="site-header">
+  <div class="logo-area">
+    <div class="logo-box">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-text"><span>LINK-UP</span> EXCLUSIVE AUTOS</div>
+      <div class="header-subtitle">Design System — Phase 1</div>
+    </div>
+  </div>
+  <div class="theme-toggle">
+    <button class="theme-btn active" onclick="setTheme('dark')">Dark</button>
+    <button class="theme-btn" onclick="setTheme('light')">Light</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ─── Hero Preview ─── -->
+  <div class="section">
+    <div class="section-label">Component Preview</div>
+    <div class="section-title">Hero Section</div>
+    <div class="hero-preview">
+      <div class="hero-bg"></div>
+      <div class="hero-noise"></div>
+      <div class="hero-content">
+        <div class="hero-label">Lagos #1 Auto Garage</div>
+        <div class="hero-title">PREMIUM<br><span>AUTO REPAIRS.</span><br>LAGOS FINEST.</div>
+        <div class="hero-tags">
+          <span class="hero-tag">Panel Beating</span>
+          <span class="hero-tag">Oven Bake Painting</span>
+          <span class="hero-tag">Car Buffing</span>
+          <span class="hero-tag">Upgrades</span>
+        </div>
+        <div class="hero-ctas">
+          <button class="btn btn-primary btn-lg">Book a Service</button>
+          <button class="btn btn-ghost btn-lg">See Our Work</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Color Palette ─── -->
+  <div class="section">
+    <div class="section-label">Colors</div>
+    <div class="section-title">Color Palette</div>
+    <div class="divider-red"></div>
+
+    <p style="font-size:13px;color:var(--fg-muted);margin-bottom:24px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;">Brand Core</p>
+    <div class="swatch-grid" style="margin-bottom:32px;">
+      <div class="swatch"><div class="swatch-color" style="background:#D0021B"></div><div class="swatch-info"><div class="swatch-name">Racing Red</div><div class="swatch-hex">#D0021B</div><div class="swatch-role">Primary Accent</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#A50115"></div><div class="swatch-info"><div class="swatch-name">Deep Crimson</div><div class="swatch-hex">#A50115</div><div class="swatch-role">Hover / Active</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FF2D42"></div><div class="swatch-info"><div class="swatch-name">Soft Red</div><div class="swatch-hex">#FF2D42</div><div class="swatch-role">Dark Hover</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#B8BEC8"></div><div class="swatch-info"><div class="swatch-name">Chrome Silver</div><div class="swatch-hex">#B8BEC8</div><div class="swatch-role">Secondary</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#0D0D0D; border:1px solid #2C2C2E;"></div><div class="swatch-info"><div class="swatch-name">Matte Black</div><div class="swatch-hex">#0D0D0D</div><div class="swatch-role">Dark BG</div></div></div>
+    </div>
+
+    <p style="font-size:13px;color:var(--fg-muted);margin-bottom:24px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;">Dark Theme — Semantic</p>
+    <div class="swatch-grid" style="margin-bottom:32px;">
+      <div class="swatch"><div class="swatch-color" style="background:#0D0D0D; border-bottom:1px solid #2C2C2E;"></div><div class="swatch-info"><div class="swatch-name">Background</div><div class="swatch-hex">#0D0D0D</div><div class="swatch-role">--bg</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1C1C1E"></div><div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex">#1C1C1E</div><div class="swatch-role">--surface</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#252528"></div><div class="swatch-info"><div class="swatch-name">Surface Raised</div><div class="swatch-hex">#252528</div><div class="swatch-role">--surface-raised</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#2C2C2E"></div><div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex">#2C2C2E</div><div class="swatch-role">--border</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F5F5F5"></div><div class="swatch-info"><div class="swatch-name">Foreground</div><div class="swatch-hex">#F5F5F5</div><div class="swatch-role">--fg</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#8A8A8E"></div><div class="swatch-info"><div class="swatch-name">Muted Text</div><div class="swatch-hex">#8A8A8E</div><div class="swatch-role">--fg-muted</div></div></div>
+    </div>
+
+    <p style="font-size:13px;color:var(--fg-muted);margin-bottom:24px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;">Light Theme — Semantic</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-color" style="background:#FAFAFA; border-bottom:1px solid #E4E4E7;"></div><div class="swatch-info"><div class="swatch-name">Background</div><div class="swatch-hex">#FAFAFA</div><div class="swatch-role">--bg</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#FFFFFF; border-bottom:1px solid #E4E4E7;"></div><div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex">#FFFFFF</div><div class="swatch-role">--surface</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#F4F4F5; border-bottom:1px solid #E4E4E7;"></div><div class="swatch-info"><div class="swatch-name">Subtle BG</div><div class="swatch-hex">#F4F4F5</div><div class="swatch-role">--bg-subtle</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#E4E4E7"></div><div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex">#E4E4E7</div><div class="swatch-role">--border</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#09090B"></div><div class="swatch-info"><div class="swatch-name">Foreground</div><div class="swatch-hex">#09090B</div><div class="swatch-role">--fg</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#71717A"></div><div class="swatch-info"><div class="swatch-name">Muted Text</div><div class="swatch-hex">#71717A</div><div class="swatch-role">--fg-muted</div></div></div>
+    </div>
+  </div>
+
+  <!-- ─── Typography ─── -->
+  <div class="section">
+    <div class="section-label">Typography</div>
+    <div class="section-title">Type Scale</div>
+    <div class="divider-red"></div>
+
+    <div class="type-sample">
+      <div class="font-display">PANEL BEATING MASTERS</div>
+      <div class="type-meta">Bebas Neue 400 · Display / Hero · clamp(64px, 8vw, 112px)</div>
+    </div>
+    <div class="type-sample">
+      <div class="font-h1">Premium Auto Repairs</div>
+      <div class="type-meta">Rajdhani 700 · H1 · clamp(40px, 5vw, 64px)</div>
+    </div>
+    <div class="type-sample">
+      <div class="font-h2">Our Services</div>
+      <div class="type-meta">Rajdhani 600 · H2 · clamp(28px, 3.5vw, 42px)</div>
+    </div>
+    <div class="type-sample">
+      <div class="font-h3">Car Oven Bake Painting</div>
+      <div class="type-meta">Rajdhani 600 · H3 · clamp(20px, 2.5vw, 26px)</div>
+    </div>
+    <div class="type-sample">
+      <div class="font-body-lg" style="color:var(--fg-muted);">We are a professional auto repair company based in Ebute-Metta, Lagos. Our services are tailored to deliver factory-quality finish every single time.</div>
+      <div class="type-meta">DM Sans 400 · Body Large · 18px</div>
+    </div>
+    <div class="type-sample">
+      <div class="font-body" style="color:var(--fg-muted);">Panel beating, car oven bake painting, car buffing, car wash, accessories and model upgrades — all under one roof in Lagos Mainland.</div>
+      <div class="type-meta">DM Sans 400 · Body · 16px</div>
+    </div>
+    <div class="type-sample">
+      <div class="font-label">Panel Beating · Lagos Mainland</div>
+      <div class="type-meta">DM Sans 500 · Label · 12px · Uppercase · Tracked</div>
+    </div>
+  </div>
+
+  <!-- ─── Buttons ─── -->
+  <div class="section">
+    <div class="section-label">Components</div>
+    <div class="section-title">Buttons</div>
+    <div class="divider-red"></div>
+    <div class="btn-row" style="margin-bottom:20px;">
+      <button class="btn btn-primary btn-lg">Book a Service</button>
+      <button class="btn btn-secondary btn-lg">See Our Work</button>
+      <button class="btn btn-ghost btn-lg">Learn More</button>
+      <button class="btn btn-chrome btn-lg">Chrome</button>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary">Book Now</button>
+      <button class="btn btn-secondary">Get Quote</button>
+      <button class="btn btn-ghost">About Us</button>
+      <button class="btn btn-primary btn-sm">Small CTA</button>
+    </div>
+  </div>
+
+  <!-- ─── Service Cards ─── -->
+  <div class="section">
+    <div class="section-label">Components</div>
+    <div class="section-title">Service Cards</div>
+    <div class="divider-red"></div>
+    <div class="card-row">
+      <div class="card">
+        <div class="card-icon">🔧</div>
+        <div class="card-title">Panel Beating</div>
+        <div class="card-body">Accident and dent repair, structural body work restored to factory specification.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🎨</div>
+        <div class="card-title">Oven Bake Painting</div>
+        <div class="card-body">Sealed oven-bake finishing delivers a showroom-quality paint job that lasts.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✨</div>
+        <div class="card-title">Car Buffing</div>
+        <div class="card-body">Paint correction, scratch removal and deep-gloss polishing for your vehicle.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚗</div>
+        <div class="card-title">Car Upgrades</div>
+        <div class="card-body">Aesthetic and functional vehicle model upgrades tailored to your taste.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Badges ─── -->
+  <div class="section">
+    <div class="section-label">Components</div>
+    <div class="section-title">Badges</div>
+    <div class="divider-red"></div>
+    <div class="badge-row">
+      <span class="badge badge-red"><span class="badge-dot badge-dot-red"></span>Panel Beating</span>
+      <span class="badge badge-red">Oven Bake</span>
+      <span class="badge badge-chrome">Chrome</span>
+      <span class="badge badge-chrome"><span class="badge-dot badge-dot-green"></span>Open Now</span>
+      <span class="badge badge-surface">Car Accessories</span>
+      <span class="badge badge-surface">Car Upgrades</span>
+      <span class="badge badge-surface">Detailing</span>
+    </div>
+  </div>
+
+  <!-- ─── Form Inputs ─── -->
+  <div class="section">
+    <div class="section-label">Components</div>
+    <div class="section-title">Form Controls (Contact / Booking)</div>
+    <div class="divider-red"></div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Full Name *</label>
+        <input class="form-input" type="text" placeholder="Enter your full name" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number *</label>
+        <input class="form-input" type="tel" placeholder="0701 234 5678" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input class="form-input" type="email" placeholder="optional@email.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Needed *</label>
+        <select class="form-select">
+          <option value="" disabled selected>Select a service</option>
+          <option>Panel Beating</option>
+          <option>Oven Bake Painting</option>
+          <option>Car Buffing</option>
+          <option>Car Wash</option>
+          <option>Car Accessories</option>
+          <option>Car Upgrades</option>
+        </select>
+      </div>
+      <div class="form-group" style="grid-column: 1/-1;">
+        <label class="form-label">Car Make & Model *</label>
+        <input class="form-input" type="text" placeholder="e.g. Toyota Camry 2018" />
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <button class="btn btn-primary">Send Enquiry</button>
+    </div>
+  </div>
+
+  <!-- ─── WhatsApp FAB ─── -->
+  <div class="section">
+    <div class="section-label">Components</div>
+    <div class="section-title">WhatsApp Floating Action Button</div>
+    <div class="divider-red"></div>
+    <div class="fab-preview">
+      <span style="position:absolute;left:24px;font-size:13px;color:var(--fg-muted);">Fixed bottom-right on all pages</span>
+      <div class="fab">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.toLowerCase() === theme);
+    });
+  }
+</script>
+</body>
+</html>
