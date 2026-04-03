@@ -45,7 +45,7 @@ export function Navbar({ overlayOnHero = false }: NavbarProps) {
           >
             <SiteLogo
               priority
-              className={`h-8 w-auto sm:h-9 ${
+              className={`h-8 max-h-8 w-auto sm:h-9 sm:max-h-9 ${
                 overlayActive ? "drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]" : ""
               }`}
             />
@@ -100,7 +100,6 @@ export function Navbar({ overlayOnHero = false }: NavbarProps) {
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
                 <div className="flex flex-col gap-6 mt-8">
-                  <SiteLogo className="h-10 w-auto" />
                   <nav className="flex flex-col gap-2">
                     {navLinks.map((link) => (
                       <Link
@@ -113,9 +112,9 @@ export function Navbar({ overlayOnHero = false }: NavbarProps) {
                       </Link>
                     ))}
                   </nav>
-                  <div className="mt-auto">
+                  <div className="mt-auto mx-auto">
                     <Link href="/contact" onClick={() => setIsOpen(false)}>
-                      <Button className="w-full bg-brand-red hover:bg-brand-red-deep text-white">
+                      <Button className=" w-full bg-brand-red hover:bg-brand-red-deep text-white">
                         Book a Service
                       </Button>
                     </Link>

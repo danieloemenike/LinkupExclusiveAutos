@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { brandLogo } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 type SiteLogoProps = {
   className?: string;
@@ -13,7 +14,10 @@ export function SiteLogo({ className, priority }: SiteLogoProps) {
       width={brandLogo.width}
       height={brandLogo.height}
       alt={brandLogo.alt}
-      className={className}
+      className={cn(
+        "object-contain object-left",
+        className
+      )}
       priority={priority}
       sizes="(max-width: 640px) 200px, 240px"
     />
