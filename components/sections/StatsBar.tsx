@@ -12,7 +12,9 @@ function AnimatedCounter({
   suffix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  // Avoid large negative root margins on mobile: they shrink the “in view” region so
+  // stacked stats near the top/bottom of the viewport never satisfy IntersectionObserver.
+  const isInView = useInView(ref, { once: true, amount: 0.35 });
   const numericValue = parseFloat(value.replace(/[^0-9.]/g, ""));
   const hasDecimal = value.includes(".");
 
