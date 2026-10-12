@@ -1,15 +1,17 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageHero } from "@/components/layout/PageHero";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { GalleryGrid } from "@/components/sections/GalleryGrid";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Gallery",
   description:
-    "Browse completed panel beating, paint, detailing, and upgrade work from Linkup Exclusive Autos, Lagos.",
-};
+    "See real panel beating, oven bake painting, buffing, detailing and upgrade jobs completed by Linkup Exclusive Autos in Ebute-Metta, Lagos.",
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

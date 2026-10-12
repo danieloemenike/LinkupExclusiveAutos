@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -10,11 +11,12 @@ import { PageHero } from "@/components/layout/PageHero";
 import { Button } from "@/components/ui/button";
 import { services } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
-    "Expert auto services including panel beating, oven bake painting, car buffing, wash & detailing. Quality workmanship in Mainland Lagos.",
-};
+    "Linkup Exclusive Autos services: panel beating, oven bake painting, car buffing & polishing, car wash & detailing, accessories and model upgrades in Mainland Lagos.",
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

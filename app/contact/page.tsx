@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
@@ -6,6 +8,13 @@ import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { ContactForm } from "@/components/contact/contact-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { companyInfo } from "@/lib/constants";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Contact",
+  description:
+    "Contact Linkup Exclusive Autos at 10 Savage Street, Ebute-Metta West, Lagos. Call or WhatsApp 0701 387 4447 to book a service or get a quote.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

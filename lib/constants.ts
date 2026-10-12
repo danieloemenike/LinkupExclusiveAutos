@@ -253,7 +253,7 @@ export const mockGalleryImages = [
 ];
 
 export const heroContent = {
-  label: "Lagos #1 Auto Garage",
+  label: "Linkup Exclusive Autos · Lagos #1 Auto Garage",
   titleLine1: "PREMIUM",
   titleLine2: "AUTO REPAIRS.",
   titleLine3: "LAGOS FINEST.",

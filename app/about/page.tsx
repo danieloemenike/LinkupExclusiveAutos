@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { Award, Users, Wrench } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
@@ -8,11 +9,12 @@ import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { Card, CardContent } from "@/components/ui/card";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About Us",
   description:
-    "Learn about Linkup Exclusive Autos - Lagos Mainland's premier auto garage with over 10 years of experience in panel beating, painting, and car repairs.",
-};
+    "About Linkup Exclusive Autos — Lagos Mainland's premier auto garage in Ebute-Metta with 10+ years of panel beating, oven bake painting and car repair experience.",
+  path: "/about",
+});
 
 const values = [
   {
