@@ -15,6 +15,8 @@
   --color-brand-red: var(--brand-red);
   --color-brand-red-deep: var(--brand-red-deep);
   --color-brand-red-light: var(--brand-red-light);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-ink-dark: oklch(0.78 0.11 22);
   --color-brand-chrome: var(--brand-chrome);
   --color-brand-black: var(--brand-black);
 
@@ -59,6 +61,8 @@
 
 :root {
   --brand-red: #d0021b;
+  /* Red for text: deeper on light backgrounds, soft coral on dark, both easy to read */
+  --brand-ink: #b0011a;
   --brand-red-deep: #a50115;
   --brand-red-light: #ff2d42;
   --brand-chrome: #b8bec8;
@@ -106,6 +110,7 @@
 
 .dark {
   --brand-red: #d0021b;
+  --brand-ink: oklch(0.78 0.11 22);
   --brand-red-deep: #ff2d42;
   --brand-red-light: #ff4757;
   --brand-chrome: #b8bec8;
@@ -283,14 +288,56 @@
       radial-gradient(ellipse 60% 40% at 80% 60%, oklch(0.18 0.04 250 / 0.2), transparent);
   }
 
-  .bg-mesh-cta {
-    background-color: var(--brand-red-deep);
-    background-image:
-      radial-gradient(ellipse 100% 80% at 100% 0%, oklch(0.55 0.2 18 / 0.4), transparent),
-      radial-gradient(ellipse 80% 60% at 0% 100%, oklch(0.25 0.1 18 / 0.5), transparent);
-  }
 
   .font-editorial {
     font-family: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  }
+
+  /* Landing page: services marquee */
+  .marquee {
+    animation: marquee 48s linear infinite;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  }
+
+  /* Testimonials: drifting review columns, faded at top and bottom */
+  .review-columns {
+    mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+  }
+  .review-scroll {
+    animation: review-scroll linear infinite;
+  }
+  .review-scroll-reverse {
+    animation-direction: reverse;
+  }
+  .review-columns:hover .review-scroll {
+    animation-play-state: paused;
+  }
+
+  /* Brushed-chrome type for dark bands */
+  .chrome-text {
+    background-image: linear-gradient(180deg, #ffffff 0%, #d9dde3 45%, #8b929c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes review-scroll {
+  to {
+    transform: translateY(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .review-scroll {
+    animation: none;
   }
 }

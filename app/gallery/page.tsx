@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { PageHero } from "@/components/layout/PageHero";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { GalleryGrid } from "@/components/sections/GalleryGrid";
+import { CTABanner } from "@/components/sections/CTABanner";
+import { googleReviews, projects } from "@/lib/constants";
 
 export const metadata: Metadata = pageMetadata({
   title: "Gallery",
@@ -17,20 +18,51 @@ export default function GalleryPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
-        <PageHero
-          label="Our work"
-          title="Project gallery"
-          description="Real jobs from our Ebute-Metta workshop—paint, panels, polish, and full details."
-          imageSrc="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1600&q=80"
-          imageAlt="Luxury automotive detail"
-        />
+      <main className="min-h-screen bg-background">
+        <section className="mx-auto max-w-7xl px-4 pb-10 pt-32 sm:px-6 lg:px-8 lg:pb-14 lg:pt-40">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-ink">
+                Our work
+              </p>
+              <h1 className="mt-4 font-display text-[clamp(2.6rem,6vw,5.5rem)] font-bold leading-[0.95] tracking-[-0.04em] text-foreground">
+                Before &amp; after,
+                <br />
+                <span className="text-muted-foreground">straight from Lagos.</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-4">
+              <p className="text-base leading-relaxed text-muted-foreground">
+                Every photo is a real job from our Ebute-Metta workshop. No stock images, no filters.
+              </p>
+              <dl className="mt-6 flex gap-8 border-t border-border pt-6">
+                <div>
+                  <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                    Featured jobs
+                  </dt>
+                  <dd className="mt-1 font-display text-2xl font-bold text-foreground">{projects.length}</dd>
+                </div>
+                <div>
+                  <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                    Google rating
+                  </dt>
+                  <dd className="mt-1 font-display text-2xl font-bold text-foreground">
+                    {googleReviews.rating.toFixed(1)}
+                    <span className="text-brand-ink">/5</span>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
 
-        <section className="bg-background py-12 lg:py-16">
+        <section className="pb-8">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <GalleryGrid />
           </div>
         </section>
+
+        <CTABanner />
       </main>
       <Footer />
       <WhatsAppFAB />

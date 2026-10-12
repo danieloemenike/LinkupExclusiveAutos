@@ -78,18 +78,18 @@ export function Footer() {
                 href={`tel:${companyInfo.phone}`}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Phone className="h-4 w-4 text-brand-red" />
+                <Phone className="h-4 w-4 text-brand-ink" />
                 {companyInfo.phoneFormatted}
               </a>
               <a
                 href={`mailto:${companyInfo.email}`}
                 className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Mail className="h-4 w-4 text-brand-red" />
+                <Mail className="h-4 w-4 text-brand-ink" />
                 {companyInfo.email}
               </a>
               <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                <MapPin className="h-4 w-4 text-brand-red shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 text-brand-ink shrink-0 mt-0.5" />
                 <span>{companyInfo.address}</span>
               </div>
               <div className="border-t border-border pt-3 mt-3">
@@ -118,7 +118,7 @@ export function Footer() {
               reserved.
             </p>
             <Link href="/contact">
-              <Button variant="ghost" size="sm" className="text-brand-red">
+              <Button variant="ghost" size="sm" className="text-brand-ink">
                 Book a Service
               </Button>
             </Link>

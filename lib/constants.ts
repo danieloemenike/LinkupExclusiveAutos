@@ -14,6 +14,7 @@ export type Service = {
   title: string;
   description: string;
   icon: LucideIcon;
+  /** Real job photo: a before/after composite (before on the top half, after on the bottom). */
   image: string;
   features: string[];
 };
@@ -26,7 +27,7 @@ export const services: Service[] = [
     description:
       "Expert accident and dent repair. We restore your vehicle's structural integrity to factory specification with precision and care.",
     icon: Hammer,
-    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80",
+    image: "/work5.jpg",
     features: [
       "Accident damage repair",
       "Dent removal",
@@ -41,7 +42,7 @@ export const services: Service[] = [
     description:
       "Our sealed oven-bake finishing delivers a showroom-quality paint job that lasts. Perfect color match guaranteed.",
     icon: PaintBucket,
-    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80",
+    image: "/work4.jpg",
     features: [
       "Factory-quality finish",
       "Color matching",
@@ -56,7 +57,7 @@ export const services: Service[] = [
     description:
       "Paint correction, scratch removal, and deep-gloss polishing. We bring back your car's original shine.",
     icon: Sparkles,
-    image: "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=800&q=80",
+    image: "/work2.jpg",
     features: [
       "Paint correction",
       "Scratch removal",
@@ -71,7 +72,7 @@ export const services: Service[] = [
     description:
       "Complete interior and exterior cleaning. From a quick wash to full detailing, we make your car spotless.",
     icon: Car,
-    image: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80",
+    image: "/work3.jpg",
     features: [
       "Exterior wash",
       "Interior vacuuming",
@@ -86,7 +87,7 @@ export const services: Service[] = [
     description:
       "Upgrade your ride with quality accessories. From stereo systems to custom interiors, we've got you covered.",
     icon: Wrench,
-    image: "https://images.unsplash.com/photo-1489824904134-891ab64532f1?w=800&q=80",
+    image: "/work6.jpg",
     features: [
       "Stereo systems",
       "Seat covers",
@@ -101,7 +102,7 @@ export const services: Service[] = [
     description:
       "Aesthetic and functional upgrades tailored to your taste. Transform your vehicle into something unique.",
     icon: Cog,
-    image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80",
+    image: "/work1.jpg",
     features: [
       "Body kits",
       "Custom painting",
@@ -124,42 +125,72 @@ export const navLinks: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+/** Real Google reviews (selected written ones). Source: Google Business Profile. */
 export type Testimonial = {
   id: string;
   name: string;
-  role: string;
-  avatar: string;
+  meta: string;
   rating: number;
+  when: string;
   quote: string;
+};
+
+export const googleReviews = {
+  rating: 4.2,
+  count: 13,
+  url: "https://share.google/uO3tgntr194PkJ1Cm",
 };
 
 export const testimonials: Testimonial[] = [
   {
-    id: "1",
-    name: "Chidi Okonkwo",
-    role: "Toyota Camry Owner",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
+    id: "osemwingie",
+    name: "Osemwingie I.",
+    meta: "Local Guide",
     rating: 5,
-    quote:
-      "Best panel beating service in Lagos! They fixed my Camry after an accident and you can't even tell it was damaged. Professional work, fair price.",
+    when: "7 months ago",
+    quote: "Best place to make your car brand new again.",
   },
   {
-    id: "2",
-    name: "Adaobi Nwosu",
-    role: "Honda Accord Owner",
-    avatar: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80",
+    id: "chinwe",
+    name: "Chinwe U.",
+    meta: "Google review",
     rating: 5,
+    when: "7 years ago",
     quote:
-      "Got my car painted here and the finish is showroom quality. The team was professional and kept me updated throughout the process.",
+      "Amazing.. it's a 5 star job.. I'll encourage any & everyone who values quality & a superb work to visit.. Link up exclusive.",
   },
   {
-    id: "3",
-    name: "Emeka Eze",
-    role: "Mercedes-Benz Owner",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
+    id: "luxury-king",
+    name: "Luxury King",
+    meta: "Google review",
     rating: 5,
+    when: "5 years ago",
+    quote: "It is a premium place to oven bake your car and do some repairs. Excellent services.",
+  },
+  {
+    id: "mac-fab",
+    name: "Mac Fab",
+    meta: "Google review",
+    rating: 5,
+    when: "8 years ago",
     quote:
-      "I've been bringing all my cars here for 3 years now. Consistent quality and excellent customer service. Highly recommend!",
+      "Nice place for auto body refurbishment. I like the personal eye to details & finishing.",
+  },
+  {
+    id: "sagir",
+    name: "Sagir",
+    meta: "Local Guide",
+    rating: 4,
+    when: "7 years ago",
+    quote: "Panel beater workshop. Good services. Friendly staff. Good price.",
+  },
+  {
+    id: "anunibe",
+    name: "Anunibe U.",
+    meta: "Google review",
+    rating: 5,
+    when: "7 years ago",
+    quote: "Affordable service, good finish. Amazing job.",
   },
 ];
 
@@ -173,7 +204,7 @@ export const stats: Stat[] = [
   { value: "10", suffix: "+", label: "Years Experience" },
   { value: "2500", suffix: "+", label: "Cars Serviced" },
   { value: "1800", suffix: "+", label: "Happy Clients" },
-  { value: "4.9", suffix: "/5", label: "Customer Rating" },
+  { value: "4.2", suffix: "/5", label: "Google Rating" },
 ];
 
 export const companyInfo = {
@@ -195,61 +226,93 @@ export const companyInfo = {
   ],
 };
 
-export const mockGalleryImages = [
+/** Before/after jobs. Each photo is a composite: "before" on the top half, "after" on the bottom half. */
+export type ProjectCategory = "repair" | "paint" | "upgrade";
+
+export const projectCategories: { id: ProjectCategory | "all"; label: string }[] = [
+  { id: "all", label: "All work" },
+  { id: "repair", label: "Accident repair" },
+  { id: "paint", label: "Paint & colour" },
+  { id: "upgrade", label: "Upgrades" },
+];
+
+export type Project = {
+  id: string;
+  category: ProjectCategory;
+  src: string;
+  vehicle: string;
+  service: string;
+  summary: string;
+};
+
+export const projects: Project[] = [
   {
-    id: "1",
-    src: "/work1.jpg",
-    category: "Accident repair | Panel Beating",
-    alt: "Accident repair | Panel Beating",
-  },
-  {
-    id: "2",
-    src: "/work2.jpg",
-    category: "Panel beating work",
-    alt: "Panel beating work",
-  },
-  {
-    id: "3",
+    id: "highlander-black",
+    category: "repair",
     src: "/work3.jpg",
-    category: "Oven Bake Painting",
-    alt: "Fresh paint job",
+    vehicle: "Toyota Highlander",
+    service: "Accident repair · Oven bake respray",
+    summary: "Front-end collision damage straightened, refitted and resprayed in deep gloss black.",
   },
   {
-    id: "4",
-    src: "/work4.jpg",
-    category: "Car buffing and polishing",
-    alt: "Car buffing and polishing",
+    id: "lx570",
+    category: "upgrade",
+    src: "/work1.jpg",
+    vehicle: "Lexus LX 570",
+    service: "Model upgrade · Full respray",
+    summary: "Older LX brought up to the latest facelift look, finished in piano black.",
   },
   {
-    id: "5",
+    id: "highlander-red",
+    category: "repair",
     src: "/work5.jpg",
-    category: "Car wash and detailin",
-    alt: "Car wash and detailing",
+    vehicle: "Toyota Highlander",
+    service: "Panel beating · Bumper rebuild",
+    summary: "Crushed front bumper and wing rebuilt, colour-matched to the original red.",
   },
   {
-    id: "6",
-    src: "/work6.jpg",
-    category: "Car model upgrade",
-    alt: "Car model upgrade",
+    id: "land-cruiser",
+    category: "paint",
+    src: "/work4.jpg",
+    vehicle: "Toyota Land Cruiser",
+    service: "Colour change · Oven bake painting",
+    summary: "Pearl white to black colour change, baked for a hard, long-lasting finish.",
   },
-  // {
-  //   id: "7",
-  //   src: "https://images.unsplash.com/photo-1493238792000-8113da705763?w=800&q=80",
-  //   category: "painting",
-  //   alt: "Custom paint work",
-  // },
-  // {
-  //   id: "8",
-  //   src: "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=800&q=80",
-  //   category: "panel-beating",
-  //   alt: "Accident repair",
-  // },
-  // {
-  //   id: "9",
-  //   src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
-  //   category: "buffing",
-  //   alt: "Paint correction",
-  // },
+  {
+    id: "gx460",
+    category: "upgrade",
+    src: "/work6.jpg",
+    vehicle: "Lexus GX 460",
+    service: "Model upgrade · Respray",
+    summary: "Facelift conversion with new grille and lights, resprayed black.",
+  },
+  {
+    id: "is250",
+    category: "paint",
+    src: "/work2.jpg",
+    vehicle: "Lexus IS 250",
+    service: "Panel beating · Repaint",
+    summary: "Body panels straightened and repainted from black to silver.",
+  },
+];
+
+export const processSteps = [
+  {
+    title: "Inspect",
+    description: "Bring the car in or send photos on WhatsApp. We assess the damage the same day.",
+  },
+  {
+    title: "Quote",
+    description: "A clear, itemised price and timeline before any work starts. No surprises.",
+  },
+  {
+    title: "Restore",
+    description: "Panel work, oven-bake paint and polish by our own technicians, in our own workshop.",
+  },
+  {
+    title: "Deliver",
+    description: "Walk around it with us, check every panel, then drive off looking factory-new.",
+  },
 ];
 
 export const heroContent = {

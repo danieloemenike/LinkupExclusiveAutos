@@ -43,7 +43,7 @@ export default function ServicesPage() {
                   }`}
                 >
                   <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red mb-6">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-brand-red/10 text-brand-ink mb-6">
                       <service.icon className="h-7 w-7" />
                     </div>
                     <h2 className="font-heading text-3xl sm:text-4xl font-bold mb-4">

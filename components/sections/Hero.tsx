@@ -1,141 +1,123 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { heroContent, mockGalleryImages } from "@/lib/constants";
+import { ArrowRight, ArrowUpRight, Star } from "lucide-react";
+import { companyInfo, googleReviews, heroContent, projects, stats } from "@/lib/constants";
 
-const stripImages = mockGalleryImages.slice(0, 3);
+const heroImage =
+  "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=2000&q=80";
 
 export function Hero() {
-  const heroImage =
-    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=80";
+  const latest = projects[0];
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black grain-overlay">
-      <div className="absolute inset-0 z-0">
+    <section className="bg-background px-3 pt-[4.5rem] sm:px-4">
+      {/* Full-bleed cinematic frame. Always dark inside, so it reads the same in both themes. */}
+      <div className="relative isolate flex min-h-[640px] flex-col overflow-hidden rounded-[2rem] bg-neutral-950 text-white sm:h-[calc(100svh-5.5rem)] sm:max-h-[880px] sm:rounded-[2.5rem]">
         <Image
           src={heroImage}
-          alt="Premium luxury car detail"
+          alt="Dark grey sports car under a cloudy sky"
           fill
-          className="object-cover opacity-[0.55]"
           priority
+          className="-z-10 object-cover object-[center_78%] motion-safe:animate-in motion-safe:zoom-in-110 motion-safe:duration-[1600ms]"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40" />
-      </div>
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/95 via-black/35 to-black/10" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/70 via-black/15 to-transparent" />
 
-      <div className="relative z-10 flex min-h-screen flex-col justify-end px-4 pb-16 pt-28 sm:px-6 md:px-12 lg:px-16 lg:pb-20">
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-10">
-            <motion.div
-              className="space-y-8 lg:col-span-7"
-              initial={{ opacity: 0, y: 28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="flex items-center gap-4">
-                <span className="h-px w-14 bg-brand-red" />
-                <span className="font-editorial text-sm italic tracking-wide text-white/85 md:text-base">
-                  {heroContent.label}
-                </span>
-              </div>
+        {/* Top row */}
+        <div className="flex items-start justify-between gap-4 p-5 sm:p-8 lg:p-10">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white/85 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-red-light" />
+            Linkup Exclusive Autos · Ebute-Metta, Lagos
+          </span>
+          <a
+            href={googleReviews.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-xs font-medium text-white/85 backdrop-blur-md transition-colors hover:bg-white/20 sm:inline-flex"
+          >
+            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+            {googleReviews.rating.toFixed(1)} on Google · {googleReviews.count} reviews
+          </a>
+        </div>
 
-              <h1 className="font-display text-[clamp(2.75rem,8vw,7rem)] leading-[0.92] tracking-tighter text-white text-balance">
-                {heroContent.titleLine1}
-                <br />
-                <span className="text-brand-red">{heroContent.titleLine2}</span>
-                <br />
-                <span className="text-white/95">{heroContent.titleLine3}</span>
-              </h1>
+        {/* Bottom content */}
+        <div className="mt-auto grid items-end gap-8 p-5 sm:p-8 lg:grid-cols-12 lg:p-10">
+          <div className="lg:col-span-8 motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-8 motion-safe:duration-700">
+            <h1 className="font-display text-[clamp(2.6rem,6.4vw,6rem)] font-bold leading-[0.95] tracking-[-0.04em]">
+              Lagos&apos; finest
+              <br />
+              bodywork <span className="text-brand-ink-dark">&amp;</span> paint.
+            </h1>
+            <p className="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
+              {heroContent.subtitle}
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href={heroContent.cta.primary.href}
+                className="group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-brand-red px-7 text-[15px] font-medium text-white shadow-brand-red transition-colors hover:bg-brand-red-light"
+              >
+                {heroContent.cta.primary.label}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <a
+                href={companyInfo.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-7 text-[15px] font-medium text-white backdrop-blur-md transition-colors hover:bg-white/20"
+              >
+                Quote on WhatsApp
+                <ArrowUpRight className="h-4 w-4 text-white/60" />
+              </a>
+            </div>
+          </div>
 
-              <p className="max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-                {heroContent.subtitle}
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-2">
-                <Link href={heroContent.cta.primary.href}>
-                  <Button className="bg-brand-red px-8 py-6 text-base font-medium text-white shadow-brand-red transition-all duration-300 hover:bg-brand-red-deep hover:shadow-brand-hover">
-                    {heroContent.cta.primary.label}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href={heroContent.cta.secondary.href}>
-                  <Button
-                    variant="outline"
-                    className="border-white/25 bg-white/5 px-8 py-6 text-base font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10"
-                  >
-                    {heroContent.cta.secondary.label}
-                  </Button>
-                </Link>
-              </div>
-
-              <div className="flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-8">
-                {heroContent.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs font-medium uppercase tracking-[0.2em] text-white/45"
-                  >
-                    {tag}
+          {/* Real job teaser */}
+          <a
+            href="#projects"
+            className="group hidden w-full max-w-sm justify-self-end rounded-3xl border border-white/15 bg-white/10 p-3 backdrop-blur-xl transition-colors hover:bg-white/15 lg:col-span-4 lg:block motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-right-8 motion-safe:duration-1000"
+          >
+            <div className="grid grid-cols-2 gap-1.5 overflow-hidden rounded-2xl">
+              {(["top", "bottom"] as const).map((half) => (
+                <div key={half} className="relative aspect-[4/3] overflow-hidden">
+                  <div className={`absolute inset-x-0 h-[200%] ${half === "top" ? "top-0" : "-top-full"}`}>
+                    <Image src={latest.src} alt="" fill className="object-cover" sizes="200px" />
+                  </div>
+                  <span className="absolute bottom-1.5 left-1.5 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider">
+                    {half === "top" ? "Before" : "After"}
                   </span>
-                ))}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center justify-between gap-3 px-2 pb-1 pt-3">
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/55">
+                  Latest job
+                </p>
+                <p className="mt-0.5 font-display text-base font-semibold">{latest.vehicle}</p>
               </div>
-            </motion.div>
-
-            <motion.div
-              className="flex flex-col gap-5 lg:col-span-5"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="text-[10px] font-medium uppercase tracking-[0.25em] text-white/40">
-                Recent work
-              </p>
-              <div className="flex gap-3 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-                {stripImages.map((img, i) => (
-                  <Link
-                    key={img.id}
-                    href="/gallery"
-                    className={`group relative shrink-0 overflow-hidden rounded-xl ring-1 ring-white/15 transition-transform duration-500 hover:-translate-y-1 hover:ring-white/30 ${
-                      i === 0 ? "aspect-[4/3] w-[44%] min-w-[160px] sm:min-w-[200px]" : "aspect-square w-[26%] min-w-[100px] sm:min-w-[120px]"
-                    }`}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      sizes="(max-width: 768px) 40vw, 200px"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="mt-16 flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-white/35">
-            <span>Scroll</span>
-            <svg
-              className="h-4 w-4 animate-bounce"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-neutral-900 transition-transform group-hover:rotate-45">
+                <ArrowUpRight className="h-4 w-4" />
+              </span>
+            </div>
+          </a>
         </div>
       </div>
+
+      {/* Stats */}
+      <dl className="mx-auto mt-3 grid max-w-7xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:mt-4 lg:grid-cols-4">
+        {stats.map((stat) => (
+          <div key={stat.label} className="bg-background px-5 py-5 sm:px-7 sm:py-6">
+            <dt className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+              {stat.label}
+            </dt>
+            <dd className="mt-1.5 font-display text-3xl font-bold tabular-nums tracking-tight text-foreground sm:text-4xl">
+              {Number(stat.value).toLocaleString()}
+              <span className="text-brand-ink">{stat.suffix}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }

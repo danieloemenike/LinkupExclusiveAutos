@@ -46,8 +46,8 @@ export default function AboutPage() {
           label="About us"
           title="Your trusted auto partner"
           description="Over a decade on the Mainland: panel work, oven-bake paint, detailing, and upgrades—with the finish your car deserves."
-          imageSrc="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1600&q=80"
-          imageAlt="Professional auto workshop"
+          imageSrc="/work4.jpg"
+          imageAlt="Toyota Land Cruiser before and after a respray at our workshop"
         />
 
         <section className="py-20 bg-background">
@@ -92,7 +92,7 @@ export default function AboutPage() {
               {values.map((value) => (
                 <Card key={value.title} className="border-border bg-card">
                   <CardContent className="p-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-ink mb-4">
                       <value.icon className="h-6 w-6" />
                     </div>
                     <h3 className="font-heading text-xl font-bold mb-2">

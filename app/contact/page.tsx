@@ -57,7 +57,7 @@ export default function ContactPage() {
                       href={`tel:${companyInfo.phone}`}
                       className="flex items-start gap-3 text-muted-foreground transition-colors hover:text-foreground"
                     >
-                      <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" />
+                      <Phone className="mt-0.5 h-5 w-5 shrink-0 text-brand-ink" />
                       <div>
                         <p className="font-medium text-foreground">Phone</p>
                         <p>{companyInfo.phoneFormatted}</p>
@@ -67,21 +67,21 @@ export default function ContactPage() {
                       href={`mailto:${companyInfo.email}`}
                       className="flex items-start gap-3 text-muted-foreground transition-colors hover:text-foreground"
                     >
-                      <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" />
+                      <Mail className="mt-0.5 h-5 w-5 shrink-0 text-brand-ink" />
                       <div>
                         <p className="font-medium text-foreground">Email</p>
                         <p>{companyInfo.email}</p>
                       </div>
                     </a>
                     <div className="flex items-start gap-3 text-muted-foreground">
-                      <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" />
+                      <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-ink" />
                       <div>
                         <p className="font-medium text-foreground">Address</p>
                         <p>{companyInfo.address}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3 text-muted-foreground">
-                      <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-red" />
+                      <Clock className="mt-0.5 h-5 w-5 shrink-0 text-brand-ink" />
                       <div>
                         <p className="font-medium text-foreground">
                           Business hours
